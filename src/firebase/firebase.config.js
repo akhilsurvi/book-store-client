@@ -5,15 +5,15 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA6NaL30YmPBXn3vXhK6BeZu2zGyteNDJk",
-  authDomain: "mern-book-inventor-b222f.firebaseapp.com",
-  projectId: "mern-book-inventor-b222f",
-  storageBucket: "mern-book-inventor-b222f.appspot.com",
-  messagingSenderId: "660118445527",
-  appId: "1:660118445527:web:aff79378f786efe6c1bf92"
+  apiKey: "AIzaSyCbPW5jtsrXP8rQq40DWLdI0Rr9RHt1W_w",
+  authDomain: "fir-book-inventory-2de81.firebaseapp.com",
+  projectId: "fir-book-inventory-2de81",
+  storageBucket: "fir-book-inventory-2de81.appspot.com",
+  messagingSenderId: "159855090247",
+  appId: "1:159855090247:web:90075b81d5cf3342276f62"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export default app;
+export default app
