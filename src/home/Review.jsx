@@ -3,7 +3,9 @@ import React, { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {FaStar} from 'react-icons/fa6';
 import { Avatar } from "flowbite-react";
-import proPic from '../assets/profile.jpg'
+import proPic1 from '../assets/male.png'
+import proPic2 from '../assets/female.png'
+
 
 // Import Swiper styles
 import 'swiper/css';
@@ -52,14 +54,14 @@ const Review = () => {
                 </div>
                 <div className='mt-7'>
                     <p className='mb-5'>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi soluta esse nemo beatae ex ad 
-                        voluptatem aut doloribus autem.
-                         Vel recusandae eveniet molestias numquam, tenetur placeat quidem consequatur architecto rem.
+                    "'Happy Place' is a heartwarming read with wonderfully developed characters 
+                    and a captivating storyline. The blend of romance, friendship, and self-discovery kept me
+                     hooked from start to finish. Highly recommended!"
                     </p>
-                    <Avatar img={proPic} alt="avatar of Jese" rounded 
+                    <Avatar img={proPic1} alt="avatar of Jese" rounded 
                     className='w-10 mb-4'/>
-                    <h5 className='text-lg font-medium'>Mark Ping</h5>
-                    <p className='text-base'> CEO,ABC Company</p>
+                    <h5 className='text-lg font-medium'>Aarav Khanna</h5>
+                    <p className='text-base'> Marketing Manager at Khanna Solutions </p>
                 </div>
 
             </div>
@@ -74,14 +76,15 @@ const Review = () => {
                 </div>
                 <div className='mt-7'>
                     <p className='mb-5'>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi soluta esse nemo beatae ex ad 
-                        voluptatem aut doloribus autem.
-                         Vel recusandae eveniet molestias numquam, tenetur placeat quidem consequatur architecto rem.
+                    "'Hell Bent' is an exhilarating read, packed with suspense and
+                     unexpected twists. The characters are complex and the plot is deeply engaging. 
+                     It's a dark, thrilling adventure that kept me hooked from start to finish. 
+                     Highly recommended for thriller fans!"
                     </p>
-                    <Avatar img={proPic} alt="avatar of Jese" rounded 
+                    <Avatar img={proPic2} alt="avatar of Jese" rounded 
                     className='w-10 mb-4'/>
-                    <h5 className='text-lg font-medium'>Mark Ping</h5>
-                    <p className='text-base'> CEO,ABC Company</p>
+                    <h5 className='text-lg font-medium'>Priya Patel</h5>
+                    <p className='text-base'> Senior Software Engineer at Mehta Tech Innovators</p>
                 </div>
 
             </div>
@@ -96,14 +99,12 @@ const Review = () => {
                 </div>
                 <div className='mt-7'>
                     <p className='mb-5'>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi soluta esse nemo beatae ex ad 
-                        voluptatem aut doloribus autem.
-                         Vel recusandae eveniet molestias numquam, tenetur placeat quidem consequatur architecto rem.
+                    "'House of Flame and Shadow' is a mesmerizing fantasy with rich world-building and unforgettable characters. The plot is filled with intrigue and magic, keeping me hooked till the end. A must-read for fans of immersive and captivating fantasy adventures!"
                     </p>
-                    <Avatar img={proPic} alt="avatar of Jese" rounded 
+                    <Avatar img={proPic1} alt="avatar of Jese" rounded 
                     className='w-10 mb-4'/>
-                    <h5 className='text-lg font-medium'>Mark Ping</h5>
-                    <p className='text-base'> CEO,ABC Company</p>
+                    <h5 className='text-lg font-medium'>Aditya Singh</h5>
+                    <p className='text-base'> Sales Executive at Singh & Sons Pvt. Ltd</p>
                 </div>
 
             </div>
@@ -118,14 +119,12 @@ const Review = () => {
                 </div>
                 <div className='mt-7'>
                     <p className='mb-5'>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi soluta esse nemo beatae ex ad 
-                        voluptatem aut doloribus autem.
-                         Vel recusandae eveniet molestias numquam, tenetur placeat quidem consequatur architecto rem.
+                    "Holly" weaves a tender narrative of love and healing through its deeply relatable characters and emotive storytelling. It's a heartwarming journey of overcoming loss and finding solace in unexpected places. Truly touching and memorable.
                     </p>
-                    <Avatar img={proPic} alt="avatar of Jese" rounded 
+                    <Avatar img={proPic2} alt="avatar of Jese" rounded 
                     className='w-10 mb-4'/>
-                    <h5 className='text-lg font-medium'>Mark Ping</h5>
-                    <p className='text-base'> CEO,ABC Company</p>
+                    <h5 className='text-lg font-medium'>Meera Nambiar </h5>
+                    <p className='text-base'>Research Scientist at Nambiar Biotech</p>
                 </div>
 
             </div>
@@ -140,14 +139,12 @@ const Review = () => {
                 </div>
                 <div className='mt-7'>
                     <p className='mb-5'>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi soluta esse nemo beatae ex ad 
-                        voluptatem aut doloribus autem.
-                         Vel recusandae eveniet molestias numquam, tenetur placeat quidem consequatur architecto rem.
+                    ‘Divine Rivals’ is an enthralling blend of mythology and adventure, weaving intricate plots with compelling characters. The clash of gods and mortals is portrayed with depth and excitement, making it a captivating read."
                     </p>
-                    <Avatar img={proPic} alt="avatar of Jese" rounded 
+                    <Avatar img={proPic1} alt="avatar of Jese" rounded 
                     className='w-10 mb-4'/>
-                    <h5 className='text-lg font-medium'>Mark Ping</h5>
-                    <p className='text-base'> CEO,ABC Company</p>
+                    <h5 className='text-lg font-medium'>Suresh Kulkarni </h5>
+                    <p className='text-base'> Operations Manager at Kulkarni Logistics</p>
                 </div>
 
             </div>
