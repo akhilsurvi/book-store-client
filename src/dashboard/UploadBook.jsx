@@ -45,6 +45,7 @@ const UploadBook = () => {
     const category = form.categoryName.value;
     const imageDescription = form.imageDescription.value;
     const bookPdfUrl = form.bookPdfUrl.value;
+    const postedBy = form.postedBy.value;
     const bookObj = {
       bookTitle,
       authorName,
@@ -52,6 +53,7 @@ const UploadBook = () => {
       category,
       imageDescription,
       bookPdfUrl,
+      postedBy,
     };
     fetch("https://book-store-server-dhkp.onrender.com/upload-book", {
       method: "POST",
@@ -66,6 +68,9 @@ const UploadBook = () => {
         form.reset();
       });
   };
+
+  const params = new URLSearchParams(location.search);
+  const email = params.get("email");
 
   return (
     <div className="px-4 my-12">
@@ -145,18 +150,35 @@ const UploadBook = () => {
           />
         </div>
 
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="bookPdfUrl" value="Book PDF URL" />
+        <div className="flex gap-8">
+          <div className="lg:w-1/2">
+            <div className="mb-2">
+              <Label htmlFor="bookPdfUrl" value="Book PDF URL" />
+            </div>
+            <TextInput
+              id="bookPdfUrl"
+              name="bookPdfUrl"
+              type="text"
+              placeholder="book pdf Url"
+              required
+              shadow
+            />
           </div>
-          <TextInput
-            id="bookPdfUrl"
-            name="bookPdfUrl"
-            type="text"
-            placeholder="book pdf Url"
-            required
-            shadow
-          />
+          <div className="lg:w-1/2">
+            <div className="mb-2">
+              <Label htmlFor="bookPdfUrl" value="Posted By" />
+            </div>
+            <TextInput
+              id="postedBy"
+              name="postedBy"
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              disabled={true}
+              required
+              shadow
+            />
+          </div>
         </div>
 
         <Button type="submit" className="mt-5">

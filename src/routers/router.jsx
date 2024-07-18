@@ -57,8 +57,6 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <Dashboard />
           </PrivateRoute>
-            
-         
         ),
       },
       {

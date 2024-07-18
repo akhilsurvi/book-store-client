@@ -5,9 +5,11 @@ import { Table, TableBody } from "flowbite-react";
 
 const ManageBooks = () => {
   const [allBooks, setAllBooks] = useState([]);
+  const params = new URLSearchParams(location.search);
+  const email = params.get("email");
 
   useEffect(() => {
-    fetch("https://book-store-server-dhkp.onrender.com/all-books")
+    fetch(`https://book-store-server-dhkp.onrender.com/my-books/${email}`)
       .then((res) => res.json())
       .then((data) => setAllBooks(data));
   }, []);

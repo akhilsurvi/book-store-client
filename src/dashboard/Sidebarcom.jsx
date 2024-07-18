@@ -19,10 +19,10 @@ function Sidebarcom() {
           <Sidebar.Item href="/admin/dashboard" icon={HiChartPie}>
             Dashboard
           </Sidebar.Item>
-          <Sidebar.Item href="/admin/dashboard/upload" icon={HiOutlineCloudUpload}>
+          <Sidebar.Item href={`/admin/dashboard/upload?email=${user?.email}`} icon={HiOutlineCloudUpload}>
             Upload Book
           </Sidebar.Item>
-          <Sidebar.Item href="/admin/dashboard/manage" icon={HiInbox}>
+          <Sidebar.Item href={`/admin/dashboard/manage?email=${user?.email}`} icon={HiInbox}>
            Manage Books
           </Sidebar.Item>
           <Sidebar.Item href="#" icon={HiUser}>
