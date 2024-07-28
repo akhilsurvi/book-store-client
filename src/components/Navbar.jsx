@@ -7,24 +7,19 @@ import Login from "./Login";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
-  const { user,logOut } = useContext(AuthContext);
-    const location=useLocation();
-    const navigate=useNavigate();
-    const from=location.state?.from?.pathname||"/"
+  const { user, logOut } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
-
-    const handleLogout=()=>{
-        logOut().then(()=>{
-            alert("Sign-out successful!! ");
-            navigate(from,{replace:true})
-
-
-        }).catch((error)=>{
-
-        });
-
-        
-    }
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        alert("Sign-out successful!! ");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {});
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -79,7 +74,7 @@ const Navbar = () => {
           <div className="hidden space-x-12 lg:flex items-center ">
             {!user?.emailVerified ? (
               <Link
-                to = {"http://localhost:5173/login"}
+                to={"https://book-store-client-gules.vercel.app/login"}
                 className="py-2 px-5 border rounded hover:bg-blue-500 hover:text-white"
               >
                 Log in
@@ -101,31 +96,31 @@ const Navbar = () => {
             )}
           </div>
           <div className="md:hidden">
-          <div className="mr-3 flex items-center ">
-            {!user?.emailVerified ? (
-              <Link
-                to = {"http://localhost:5173/login"}
-                className="py-2 px-5 border rounded hover:bg-blue-500 hover:text-white"
-              >
-                Log in
-              </Link>
-            ) : (
-              <div className="flex">
-                <img
-                  className="w-10 h-10 rounded-full mr-3"
-                  onClick={toggleMenu}
-                  src={user?.photoURL}
-                  alt={user.name}
-                />
+            <div className="mr-3 flex items-center ">
+              {!user?.emailVerified ? (
                 <Link
-                  onClick={() => handleLogout()}
+                  to={"https://book-store-client-gules.vercel.app/login"}
                   className="py-2 px-5 border rounded hover:bg-blue-500 hover:text-white"
                 >
-                  Logout
+                  Log in
                 </Link>
-              </div>
-            )}
-          </div>
+              ) : (
+                <div className="flex">
+                  <img
+                    className="w-10 h-10 rounded-full mr-3"
+                    onClick={toggleMenu}
+                    src={user?.photoURL}
+                    alt={user.name}
+                  />
+                  <Link
+                    onClick={() => handleLogout()}
+                    className="py-2 px-5 border rounded hover:bg-blue-500 hover:text-white"
+                  >
+                    Logout
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
           <div
             className={`space-y-4 px-4 mt-16 py-7 bg-blue-700 ${
