@@ -45,6 +45,14 @@ const router = createBrowserRouter([
             `https://book-store-server-dhkp.onrender.com/book/${params.id}`
           ),
       },
+      {
+        path: "/my-books/:email",
+        element: <ManageBooks />,
+        loader: ({ params }) =>
+          fetch(
+            `https://book-store-server-dhkp.onrender.com/my-books/${params.email}`
+          ),
+      },
     ],
   },
   {
