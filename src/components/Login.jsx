@@ -1,67 +1,87 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../contects/AuthProvider";
-import googleLogo from '../assets/google-logo.svg'
+// import { AuthContext } from "../contects/AuthProvider";
+// import googleLogo from '../assets/google-logo.svg'
+import { signup } from "../ServerMethods/apiCalls";
+import { login } from "../ServerMethods/apiCalls";
 
 const Login = () => {
 
 
-    const {login,loginwithGoogle}=useContext(AuthContext);
+    // const {login,loginwithGoogle}=useContext(AuthContext);
     const [error,setError]=useState("");
     const location=useLocation();
     const navigate=useNavigate();
     const from=location.state?.from?.pathname||"/"
 
-    const handleLogin=(event)=>{
-        event.preventDefault();
-        const form=event.target;
+    const handleLogin=async(e)=>{
+        e.preventDefault();
+        const form=e.target;
         const email=form.email.value;
         const password=form.password.value;
-        login(email,password).then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
+        login(email, password)
+        .then(() => {
+            // Handle successful login (e.g., redirect or fetch user data)
             alert("Login Successful!!")
             navigate(from,{replace:true})
-            // ...
-          })
-          .catch((error) => {
+            console.log('Logged in successfully!');
+        })
+        .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             setError(errorMessage);
-          });
 
-
-        // createUser(email, password)
-        // .then((userCredential) => {
-        //   // Signed up 
-        //   const user = userCredential.user;
-        //   alert("Sign up successfully!!");
-        //   navigate(from,{replace:true})
-        //   // ...
-        // })
-        // .catch((error) => {
-        //   const errorCode = error.code;
-        //   const errorMessage = error.message;
-        //   setError("errorMessage")
-        //   // ..
-        // });
-    }
-    const handleRegister=()=>{
-        loginwithGoogle().then((result)=>{
-            const user=result.user;
-          alert("Sign up successfully!!");
-            navigate(from,{replace:true});
-
-        }).catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setError("errorMessage")
-          // ..
+            setError('Login failed. Please check your credentials.');
+            console.error('Login failed:', error);
         });
 
-    }
+      }
+
+        
+        /* fire base code */
+    //     login(email,password).then((userCredential) => {
+    //         // Signed in 
+    //         const user = userCredential.user;
+    //         alert("Login Successful!!")
+    //         navigate(from,{replace:true})
+    //         // ...
+    //       })
+    //       .catch((error) => {
+    //         const errorCode = error.code;
+    //         const errorMessage = error.message;
+    //         setError(errorMessage);
+    //       });
 
 
+    //     createUser(email, password)
+    //     .then((userCredential) => {
+    //       // Signed up 
+    //       const user = userCredential.user;
+    //       alert("Sign up successfully!!");
+    //       navigate(from,{replace:true})
+    //       // ...
+    //     })
+    //     .catch((error) => {
+    //       const errorCode = error.code;
+    //       const errorMessage = error.message;
+    //       setError("errorMessage")
+    //       // ..
+    //     });
+    // }
+    // const handleRegister=()=>{
+    //     loginwithGoogle().then((result)=>{
+    //         const user=result.user;
+    //       alert("Sign up successfully!!");
+    //         navigate(from,{replace:true});
+
+    //     }).catch((error) => {
+    //       const errorCode = error.code;
+    //       const errorMessage = error.message;
+    //       setError("errorMessage")
+    //       // ..
+    //     });
+
+    // }
 
 
 
@@ -110,9 +130,9 @@ const Login = () => {
             </form>
           </div>
           <hr/>
-          <div className="flex w-full items-center flex=col mt-5 gap-3">
+          {/* <div className="flex w-full items-center flex=col mt-5 gap-3">
               <button onClick={handleRegister} className="block" ><img  src={googleLogo} alt="" className="w-12 h-12 inline-block" />Login with Google</button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

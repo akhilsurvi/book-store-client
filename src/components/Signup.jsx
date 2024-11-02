@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contects/AuthProvider";
 import googleLogo from '../assets/google-logo.svg'
-
+import { signup } from "../ServerMethods/apiCalls";
 
 const Signup = () => {
     const {createUser,loginwithGoogle}=useContext(AuthContext);
@@ -17,36 +17,47 @@ const Signup = () => {
         const email=form.email.value;
         const password=form.password.value;
 
-
-        createUser(email, password)
-        .then((userCredential) => {
-          // Signed up 
-          const user = userCredential.user;
+        signup(email, password)
+        .then(() => {
           alert("Sign up successfully!!");
-          navigate(from,{replace:true})
-          // ...
+          navigate("/login")
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setError("errorMessage")
-          // ..
-        });
-    }
-    const handleRegister=()=>{
-        loginwithGoogle().then((result)=>{
-            const user=result.user;
-          alert("Sign up successfully!!");
-            navigate(from,{replace:true});
-
-        }).catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setError("errorMessage")
-          // ..
         });
 
+
+        // createUser(email, password)
+        // .then((userCredential) => {
+        //   // Signed up 
+        //   const user = userCredential.user;
+        //   alert("Sign up successfully!!");
+        //   navigate(from,{replace:true})
+        //   // ...
+        // })
+        // .catch((error) => {
+        //   const errorCode = error.code;
+        //   const errorMessage = error.message;
+        //   setError("errorMessage")
+        //   // ..
+        // });
     }
+    // const handleRegister=()=>{
+    //     loginwithGoogle().then((result)=>{
+    //         const user=result.user;
+    //       alert("Sign up successfully!!");
+    //         navigate(from,{replace:true});
+
+    //     }).catch((error) => {
+    //       const errorCode = error.code;
+    //       const errorMessage = error.message;
+    //       setError("errorMessage")
+    //       // ..
+    //     });
+
+    // }
   return (
     <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
@@ -90,9 +101,9 @@ const Signup = () => {
               </form>
             </div>
             <hr/>
-            <div className="flex w-full items-center flex=col mt-5 gap-3">
+            {/* <div className="flex w-full items-center flex=col mt-5 gap-3">
                 <button onClick={handleRegister} className="block" ><img  src={googleLogo} alt="" className="w-12 h-12 inline-block" />Continue with Google</button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

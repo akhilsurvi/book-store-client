@@ -6,23 +6,23 @@ import { useContext } from "react";
 import { AuthContext } from "../contects/AuthProvider";
 
 function Sidebarcom() {
-  const {user}=useContext(AuthContext);
-  console.log(user);
+  // const {user}=useContext(AuthContext);
+  // console.log(user);
   return (
     <div>
          <Sidebar aria-label="Sidebar with content separator example">
-         <Sidebar.Logo href="/" img={user?.photoURL} imgAlt="Flowbite logo" className="w-16 h-16">
+         {/* <Sidebar.Logo href="/" img={user?.photoURL} imgAlt="Flowbite logo" className="w-16 h-16">
         <p>{user?.displayName||"Demo User"}</p>
-      </Sidebar.Logo>
+      </Sidebar.Logo> */}
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Sidebar.Item href="/admin/dashboard" icon={HiChartPie}>
             Dashboard
           </Sidebar.Item>
-          <Sidebar.Item href={`/admin/dashboard/upload?email=${user?.email}`} icon={HiOutlineCloudUpload}>
+          <Sidebar.Item href={`/admin/dashboard/upload`} icon={HiOutlineCloudUpload}>
             Upload Book
           </Sidebar.Item>
-          <Sidebar.Item href={`/admin/dashboard/manage?email=${user?.email}`} icon={HiInbox}>
+          <Sidebar.Item href={`/admin/dashboard/manage`} icon={HiInbox}>
            Manage Books
           </Sidebar.Item>
           <Sidebar.Item href="#" icon={HiUser}>

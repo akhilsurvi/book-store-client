@@ -3,22 +3,21 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaBarsStaggered, FaBlog, FaXmark } from "react-icons/fa6";
 import { AuthContext } from "../contects/AuthProvider";
 import Login from "./Login";
+import { isLoggedIn,logout } from "../ServerMethods/apiCalls";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
-  const { user, logOut } = useContext(AuthContext);
+  // const { user, logOut } = useContext(AuthContext);
+  const [userLogged, setuserLogged] = useState(false)
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
 
   const handleLogout = () => {
-    logOut()
-      .then(() => {
-        alert("Sign-out successful!! ");
-        navigate(from, { replace: true });
-      })
-      .catch((error) => {});
+    logout();
+    setuserLogged(false);
+    
   };
 
   const toggleMenu = () => {
@@ -33,11 +32,13 @@ const Navbar = () => {
         setIsSticky(false);
       }
     };
+    setuserLogged(isLoggedIn());
+    
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [userLogged]);
 
   const navItems = [
     { link: "Home", path: "/" },
@@ -72,20 +73,15 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="hidden space-x-12 lg:flex items-center ">
-            {!user?.emailVerified ? (
+            {!userLogged? (
               <Link
-                to={"https://book-store-client-gules.vercel.app/login"}
+                to={"/login"}
                 className="py-2 px-5 border rounded hover:bg-blue-500 hover:text-white"
               >
                 Log in
               </Link>
             ) : (
               <div className="flex">
-                <img
-                  className="w-10 h-10 rounded-full mr-3"
-                  src={user?.photoURL}
-                  alt={user.name}
-                />
                 <Link
                   onClick={() => handleLogout()}
                   className="py-2 px-5 border rounded hover:bg-blue-500 hover:text-white"
@@ -94,33 +90,6 @@ const Navbar = () => {
                 </Link>
               </div>
             )}
-          </div>
-          <div className="md:hidden">
-            <div className="mr-3 flex items-center ">
-              {!user?.emailVerified ? (
-                <Link
-                  to={"https://book-store-client-gules.vercel.app/login"}
-                  className="py-2 px-5 border rounded hover:bg-blue-500 hover:text-white"
-                >
-                  Log in
-                </Link>
-              ) : (
-                <div className="flex">
-                  <img
-                    className="w-10 h-10 rounded-full mr-3"
-                    onClick={toggleMenu}
-                    src={user?.photoURL}
-                    alt={user.name}
-                  />
-                  <Link
-                    onClick={() => handleLogout()}
-                    className="py-2 px-5 border rounded hover:bg-blue-500 hover:text-white"
-                  >
-                    Logout
-                  </Link>
-                </div>
-              )}
-            </div>
           </div>
           <div
             className={`space-y-4 px-4 mt-16 py-7 bg-blue-700 ${
